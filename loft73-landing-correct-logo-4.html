@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unisciti al Team Loft.73 - Apprendista E-commerce & Social</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        /* LOGO PLACEHOLDER - SOSTITUIRE CON IMMAGINE REALE */
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo {
+            width: 160px;
+            height: 200px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .logo:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* FALLBACK SE NON C'È IMMAGINE */
+        .logo-placeholder {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            background: linear-gradient(135deg, #fff 0%, #ddd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content {
+            padding: 80px 50px;
+            position: relative;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section:last-of-type {
+            margin-bottom: 20px;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #000;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #000 0%, #666 100%);
+            animation: expandLine 1s ease-out 0.5s forwards;
+        }
+
+        .section h2.centered {
+            display: block;
+            text-align: center;
+        }
+
+        .section h2.centered::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes expandLine {
+            to { width: 100%; }
+        }
+
+        .company-intro {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 50px;
+            border-radius: 25px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .role-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 6px solid #000;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border-left-color: #333;
+        }
+
+        .role-card:hover::before {
+            left: 100%;
+        }
+
+        .role-card h3 {
+            color: #000;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirements {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            color: #fff;
+            padding: 60px 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .requirements::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .requirements h2 {
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .requirements h2::after {
+            background: linear-gradient(90deg, #fff 0%, #ccc 100%);
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .req-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .req-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .req-item h4 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .req-item p {
+            flex-grow: 1;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0 30px 0;
+        }
+
+        .detail-box {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .detail-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .detail-box:hover {
+            border-color: #000;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .detail-box:hover::before {
+            left: 100%;
+        }
+
+        .detail-box h4 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            color: #fff;
+            padding: 100px 50px;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.5); }
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            color: #000;
+            padding: 25px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-top: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 15px 40px rgba(255,255,255,0.4);
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255,255,255,0.6);
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-info {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateX(5px);
+            color: #000;
+        }
+
+        ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover:before {
+            transform: translateX(3px);
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 60px 30px;
+            }
+            
+            .header {
+                padding: 50px 25px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 150px;
+            }
+
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            
+            .cta-section {
+                padding: 60px 30px;
+            }
+
+            .company-intro, .requirements {
+                padding: 40px 30px;
+            }
+
+            .role-card, .req-item {
+                padding: 25px;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .role-grid, .req-grid, .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <!-- SOSTITUISCI QUESTA SEZIONE CON: <img src="logo-loft73.png" alt="Loft73 Logo"> -->
+                <div class="logo">
+    <img src="logoloft73.png" alt="Loft.73 Logo">
+</div>
+            </div>
+            <h1>Unisciti al nostro team!</h1>
+            <p>Apprendista/Stagista per E-commerce e Social Networks</p>
+        </div>
+
+        <div class="content">
+            <div class="company-intro section">
+                <h2 class="centered">Chi siamo</h2>
+                <p><strong>Loft.73</strong> è una realtà consolidata nella vendita di abbigliamento multibrand donna, uomo e bambino attraverso la propria rete di negozi fisici nelle città di Legnano e Varese.</p>
+                <p style="margin-top: 20px;">Siamo alla ricerca di un profilo dinamico che abbia voglia di crescere all'interno dell'azienda e che voglia intraprendere un percorso nel settore moda con particolare riferimento all'E-commerce, ai Social Network ed ai nuovi strumenti di comunicazione digitale.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="centered">Perché scegliere Loft.73?</h2>
+                <div class="company-intro">
+                    <p style="font-size: 1.15rem; line-height: 1.8;">Entrerai in un ambiente stimolante dove dare spazio alla tua creatività. Avrai l'opportunità di lavorare con brand di tendenza e di crescere professionalmente in uno dei settori più dinamici: <strong>il Fashion Retail digitale.</strong></p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="centered">Il ruolo che ti aspetta</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">Il percorso prevede <strong>affiancamento e supporto tramite formazione in sede</strong> per tutte le attività relative alle vendite online e in store.</p>
+                
+                <div class="role-grid">
+                    <div class="role-card">
+                        <h3>📦 Logistica & E-commerce</h3>
+                        <ul>
+                            <li>Gestione spedizioni e packaging</li>
+                            <li>Carico prodotti su gestionale E-commerce</li>
+                            <li>Aggiornamento sito web www.loft73.com</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h3>📱 Social Media Marketing</h3>
+                        <ul>
+                            <li>Gestione Instagram, Facebook, TikTok</li>
+                            <li>Creazione contenuti e campagne</li>
+                            <li>Supporto creazione contenuti fotografici e video</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h3>💬 Customer Care</h3>
+                        <ul>
+                            <li>Gestione vendite online</li>
+                            <li>Assistenza clienti via WhatsApp, Direct, VideoCall</li>
+                            <li>Supporto customer service</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h3>🏪 Formazione in Store</h3>
+                        <ul>
+                            <li>Attività nei negozi fisici</li>
+                            <li>Apprendimento tecniche di vendita</li>
+                            <li>Conoscenza terminologie settore moda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requirements section">
+                <h2 class="centered">Quello che cerchiamo</h2>
+                <div class="req-grid">
+                    <div class="req-item">
+                        <h4>🎯 Attitudine</h4>
+                        <p>Serietà, dinamicità, flessibilità e predisposizione al lavoro in team</p>
+                    </div>
+                    <div class="req-item">
+                        <h4>📱 Competenze Digital</h4>
+                        <p>Capacità nell'utilizzo delle piattaforme social (Instagram, TikTok, Facebook)</p>
+                    </div>
+                    <div class="req-item">
+                        <h4>👗 Passione Moda</h4>
+                        <p>Interesse e passione per il settore moda e fashion</p>
+                    </div>
+                    <div class="req-item">
+                        <h4>🎨 Creatività</h4>
+                        <p>Aspetto curato, carattere solare ed estroverso con predisposizione al dialogo</p>
+                    </div>
+                    <div class="req-item">
+                        <h4>📸 Bonus</h4>
+                        <p>Sono gradite anche competenze in ambito fotografico, gestione social media (Instagram, TikTok, YouTube) e capacità nel video editing attraverso strumenti come CapCut e Canva</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="centered">Dettagli della posizione</h2>
+                <div class="details-grid">
+                    <div class="detail-box">
+                        <h4>📍 Sede di lavoro</h4>
+                        <p>Legnano (MI)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>⏰ Orario</h4>
+                        <p>Tempo pieno<br>Lunedì-Sabato<br>Flessibilità weekend</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>📋 Contratto</h4>
+                        <p>Tempo pieno</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🎓 Istruzione</h4>
+                        <p>Scuola Secondaria II livello (Superiori)</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>💼 Esperienza</h4>
+                        <p>Non richiesta</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>🗣️ Lingua</h4>
+                        <p>Italiano (obbligatorio)</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="cta-section">
+            <h2>Sei la persona che stiamo cercando?</h2>
+            <p class="cta-subtitle">Non perdere questa opportunità di crescere nel mondo del Fashion digitale!</p>
+            <a href="href="https://docs.google.com/forms/d/e/1FAIpQLSfou_coPVaSvdx3g7c0ip3JZ1Rd5zTbWklVpJ5TFtsR-1CfQw/viewform?usp=header" class="cta-button">
+                Candidati Ora →
+            </a>
+            <p class="cta-info">Il processo è semplice: compila il form con i tuoi dati e allega il tuo CV</p>
+            <p style="margin-top: 30px; font-size: 1.2rem; color: #ffd700; font-weight: 600; position: relative; z-index: 2;">
+                ⚡ Invia la tua candidatura entro 48 ore per avere priorità nella selezione!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
