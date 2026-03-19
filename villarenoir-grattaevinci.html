@@ -8,11 +8,14 @@
 <style>
   :root {
     --black: #0a0a0a;
+    --dark: #111;
     --gold: #c9a84c;
     --gold-light: #e8c96d;
+    --gold-glow: #f0d87a;
     --cream: #f5f0e8;
     --white: #ffffff;
-    --gray: #999;
+    --text: #ccc;
+    --text-light: #aaa;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,7 +43,20 @@
   .phase { display: none; }
   .phase.active { display: flex; }
 
-  /* ==================== FASE 1: INTRO ==================== */
+  /* ===== ICONE SVG ===== */
+  .prize-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+  }
+
+  .prize-icon-small {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+  }
+
+  /* ===== FASE 1: INTRO ===== */
   .intro {
     min-height: 100vh;
     flex-direction: column;
@@ -48,15 +64,18 @@
     justify-content: center;
     text-align: center;
     padding: 48px 28px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 65%), var(--black);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 90%, rgba(201,168,76,0.05) 0%, transparent 50%),
+      var(--black);
   }
 
   .intro-collab {
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 16px;
+    color: var(--text-light);
+    margin-bottom: 14px;
     animation: fadeUp 0.8s ease both;
   }
 
@@ -79,7 +98,7 @@
   .intro-logo.gold { color: var(--gold); }
 
   .intro-divider {
-    width: 1px; height: 40px;
+    width: 1px; height: 42px;
     background: linear-gradient(to bottom, transparent, var(--gold), transparent);
     transform: rotate(20deg);
     opacity: 0.5;
@@ -88,20 +107,20 @@
   .intro-badge {
     display: inline-block;
     border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
-    font-size: 13px;
+    color: var(--gold-light);
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     padding: 10px 24px;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
     animation: fadeUp 1s ease both;
     animation-delay: 0.2s;
   }
 
   .intro-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(44px, 10vw, 68px);
+    font-size: clamp(46px, 11vw, 72px);
     font-weight: 300;
     line-height: 1.05;
     color: var(--white);
@@ -109,15 +128,19 @@
     animation: fadeUp 1s ease both;
     animation-delay: 0.3s;
   }
-  .intro-title em { font-style: italic; color: var(--gold-light); }
+  .intro-title em {
+    font-style: italic;
+    color: var(--gold-glow);
+    font-size: 1.05em;
+  }
 
   .intro-sub {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 300;
-    color: var(--gray);
-    letter-spacing: 0.03em;
+    color: var(--text);
+    letter-spacing: 0.04em;
     margin-bottom: 48px;
-    line-height: 1.7;
+    line-height: 1.8;
     animation: fadeUp 1s ease both;
     animation-delay: 0.4s;
   }
@@ -127,11 +150,11 @@
     background: var(--gold);
     color: var(--black);
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 20px 52px;
+    padding: 20px 54px;
     border: none;
     cursor: pointer;
     transition: all 0.3s;
@@ -146,15 +169,15 @@
   }
 
   .intro-note {
-    font-size: 14px;
-    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
     margin-top: 24px;
     letter-spacing: 0.08em;
     animation: fadeUp 1s ease both;
     animation-delay: 0.6s;
   }
 
-  /* ==================== FASE 2: GRATTA ==================== */
+  /* ===== FASE 2: GRATTA ===== */
   .scratch-phase {
     min-height: 100vh;
     flex-direction: column;
@@ -162,15 +185,15 @@
     justify-content: center;
     text-align: center;
     padding: 48px 28px;
-    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 65%), var(--black);
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 60%), var(--black);
   }
 
   .scratch-label {
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
     animation: fadeUp 0.8s ease both;
   }
 
@@ -180,24 +203,41 @@
     font-weight: 300;
     color: var(--white);
     margin-bottom: 10px;
+    line-height: 1.1;
     animation: fadeUp 0.9s ease both;
     animation-delay: 0.1s;
   }
-  .scratch-instruction em { font-style: italic; color: var(--gold-light); }
+  .scratch-instruction em {
+    font-style: italic;
+    color: var(--gold-glow);
+    font-size: 1.05em;
+  }
 
   .scratch-hint {
     font-size: 16px;
-    color: var(--gray);
-    margin-bottom: 40px;
+    color: var(--text);
+    margin-bottom: 32px;
     animation: fadeUp 0.9s ease both;
     animation-delay: 0.2s;
+  }
+
+  .scratch-arrow {
+    font-size: 28px;
+    margin-bottom: 14px;
+    color: var(--gold);
+    animation: bounceDown 1.5s ease infinite;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(8px); opacity: 1; }
   }
 
   .scratch-container {
     position: relative;
     width: 320px;
     height: 220px;
-    border: 2px solid rgba(201,168,76,0.3);
+    border: 2px solid rgba(201,168,76,0.35);
     margin: 0 auto;
     animation: fadeUp 1s ease both;
     animation-delay: 0.3s;
@@ -222,25 +262,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0f0e0a, #1a1712);
+    background: linear-gradient(135deg, #0e0d0a, #1a1812);
     z-index: 1;
   }
 
-  .prize-emoji { font-size: 48px; margin-bottom: 14px; }
-
   .prize-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 600;
     color: var(--gold-light);
     line-height: 1.2;
   }
 
   .prize-desc {
-    font-size: 15px;
-    color: var(--gray);
-    margin-top: 10px;
-    letter-spacing: 0.08em;
+    font-size: 14px;
+    color: var(--text);
+    margin-top: 8px;
   }
 
   #scratchCanvas {
@@ -253,42 +290,44 @@
 
   .scratch-progress {
     margin-top: 24px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.1em;
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 0.06em;
+    font-weight: 400;
     animation: pulse 2s ease infinite;
   }
 
-  /* ==================== FASE 3: PREMIO ==================== */
+  /* ===== FASE 3: PREMIO ===== */
   .prize-phase {
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 48px 28px;
-    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.15) 0%, transparent 60%), var(--black);
+    padding: 48px 24px 64px;
+    background:
+      radial-gradient(ellipse at 50% 15%, rgba(201,168,76,0.15) 0%, transparent 50%),
+      var(--black);
   }
 
   .prize-congrats {
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 500;
     animation: fadeUp 0.8s ease both;
   }
 
-  .prize-main-emoji {
-    font-size: 72px;
-    margin-bottom: 20px;
+  .prize-main-icon {
     animation: bounceIn 0.6s ease both;
     animation-delay: 0.2s;
+    margin-bottom: 16px;
   }
 
   .prize-main-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 9vw, 58px);
+    font-size: clamp(40px, 9vw, 60px);
     font-weight: 300;
     color: var(--white);
     line-height: 1.1;
@@ -296,21 +335,27 @@
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.3s;
   }
-  .prize-main-title em { font-style: italic; color: var(--gold-light); }
+  .prize-main-title em {
+    font-style: italic;
+    color: var(--gold-glow);
+    font-size: 1.05em;
+  }
 
   .prize-main-sub {
     font-size: 17px;
-    color: var(--gray);
-    margin-bottom: 40px;
+    color: var(--text);
+    margin-bottom: 36px;
+    font-weight: 300;
     letter-spacing: 0.03em;
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.4s;
   }
 
+  /* Coupon card */
   .coupon-card {
-    background: linear-gradient(135deg, #141210, #1c1915);
+    background: linear-gradient(145deg, #13110e, #1d1a14);
     border: 1px solid rgba(201,168,76,0.35);
-    padding: 32px 32px;
+    padding: 32px 28px;
     max-width: 370px;
     width: 100%;
     position: relative;
@@ -330,16 +375,17 @@
   .coupon-card::after { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
 
   .coupon-type {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    font-weight: 500;
   }
 
   .coupon-prize-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 600;
     color: var(--gold-light);
     margin-bottom: 8px;
@@ -348,66 +394,74 @@
   .coupon-prize-detail {
     font-size: 15px;
     color: var(--cream);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     line-height: 1.6;
   }
 
   .coupon-divider {
     width: 100%;
     height: 1px;
-    background: repeating-linear-gradient(90deg, rgba(201,168,76,0.3), rgba(201,168,76,0.3) 4px, transparent 4px, transparent 8px);
-    margin-bottom: 20px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.35), transparent);
+    margin-bottom: 22px;
   }
 
   .coupon-code-label {
     font-size: 12px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--text);
     margin-bottom: 10px;
+    font-weight: 400;
   }
 
   .coupon-code {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 600;
     letter-spacing: 0.15em;
     color: var(--white);
-    background: rgba(201,168,76,0.08);
-    padding: 12px 24px;
+    background: rgba(201,168,76,0.1);
+    padding: 14px 28px;
     display: inline-block;
-    border: 1px solid rgba(201,168,76,0.2);
-    margin-bottom: 16px;
+    border: 1px solid rgba(201,168,76,0.25);
+    margin-bottom: 18px;
   }
 
-  .barcode-section { margin-top: 16px; margin-bottom: 12px; }
+  .barcode-section { margin-top: 18px; margin-bottom: 14px; }
 
   .barcode-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: 12px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 10px;
+    color: var(--text);
+    margin-bottom: 12px;
+    font-weight: 400;
   }
 
   #barcodeCanvas { display: block; margin: 0 auto; }
 
   .coupon-id {
-    font-size: 20px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.25em;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.3em;
     margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
   }
 
   .coupon-validity {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.08em;
-    margin-top: 14px;
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    margin-top: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 1px solid rgba(201,168,76,0.25);
+    display: inline-block;
+    background: rgba(201,168,76,0.05);
   }
 
+  /* Istruzioni */
   .prize-instructions {
     max-width: 370px;
     width: 100%;
@@ -421,37 +475,42 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 20px;
+    font-weight: 500;
   }
 
   .instruction-item {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-align: left;
+    background: rgba(201,168,76,0.03);
+    padding: 14px 16px;
+    border-left: 2px solid rgba(201,168,76,0.4);
   }
 
   .instruction-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--gold);
     line-height: 1;
     flex-shrink: 0;
-    width: 26px;
+    width: 24px;
   }
 
   .instruction-text {
     font-size: 15px;
-    color: var(--gray);
+    color: var(--cream);
     line-height: 1.6;
   }
-  .instruction-text strong { color: var(--cream); font-weight: 500; }
+  .instruction-text strong { color: var(--white); font-weight: 600; }
 
+  /* Bottone salva */
   .action-buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
     margin-top: 32px;
     animation: fadeUp 0.8s ease both;
@@ -461,26 +520,36 @@
   .save-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: var(--gold);
     color: var(--black);
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 18px 40px;
+    padding: 18px 44px;
     border: none;
     cursor: pointer;
     transition: all 0.3s;
+    width: 100%;
+    max-width: 370px;
   }
 
   .save-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
 
+  .save-help {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* Email */
   .email-section {
     max-width: 370px;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 44px;
     padding-top: 32px;
     border-top: 1px solid rgba(201,168,76,0.15);
     animation: fadeUp 0.8s ease both;
@@ -489,7 +558,7 @@
 
   .email-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 300;
     color: var(--white);
     margin-bottom: 8px;
@@ -497,15 +566,15 @@
 
   .email-sub {
     font-size: 14px;
-    color: var(--gray);
+    color: var(--text-light);
     margin-bottom: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .email-form { display: flex; flex-direction: column; gap: 12px; }
 
   .email-input {
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.05);
     border: 1px solid rgba(201,168,76,0.25);
     color: var(--cream);
     font-family: 'Montserrat', sans-serif;
@@ -536,20 +605,20 @@
 
   .privacy-check label {
     font-size: 13px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.5);
     line-height: 1.5;
   }
 
-  .privacy-check a { color: var(--gold); text-decoration: underline; }
+  .privacy-check a { color: var(--gold-light); text-decoration: underline; }
 
   .email-submit {
-    background: rgba(201,168,76,0.15);
+    background: rgba(201,168,76,0.12);
     border: 1px solid rgba(201,168,76,0.4);
-    color: var(--gold);
+    color: var(--gold-light);
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 16px 28px;
     cursor: pointer;
@@ -557,24 +626,26 @@
   }
 
   .email-submit:hover { background: rgba(201,168,76,0.25); }
-  .email-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .email-submit:disabled { opacity: 0.3; cursor: not-allowed; }
 
   .email-success {
     display: none;
-    font-size: 15px;
+    font-size: 16px;
     color: #5fc46a;
-    margin-top: 12px;
+    margin-top: 14px;
+    font-weight: 500;
   }
 
+  /* Footer */
   .prize-footer {
-    margin-top: 40px;
+    margin-top: 44px;
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.9s;
   }
 
   .prize-footer-logos {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 300;
     letter-spacing: 0.15em;
     color: rgba(255,255,255,0.25);
@@ -583,34 +654,79 @@
 
   .prize-footer-note {
     font-size: 13px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.25);
   }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes bounceIn {
     0% { opacity: 0; transform: scale(0.3); }
     50% { transform: scale(1.1); }
     70% { transform: scale(0.95); }
     100% { opacity: 1; transform: scale(1); }
   }
-
   @keyframes pulse {
-    0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
 
   @media (max-width: 380px) {
     .scratch-container { width: 290px; height: 200px; }
-    .coupon-card { padding: 28px 24px; }
+    .coupon-card { padding: 28px 20px; }
   }
 </style>
 </head>
 <body>
+
+<!-- ICONE SVG (nascoste, usate come riferimento) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gruccia in esagono -->
+  <symbol id="icon-fashion" viewBox="0 0 90 90">
+    <polygon points="45,5 82,25 82,65 45,85 8,65 8,25" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+    <path d="M45 28 C45 28 35 30 30 38 C28 41 29 44 32 44 L42 44 L42 62 L48 62 L48 44 L58 44 C61 44 62 41 60 38 C55 30 45 28 45 28Z" fill="none" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="45" cy="25" r="2" fill="#e8c96d"/>
+  </symbol>
+  <!-- Calice in cerchio -->
+  <symbol id="icon-dining" viewBox="0 0 90 90">
+    <circle cx="45" cy="45" r="38" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+    <path d="M33 28 L37 48 L43 48 L43 60 L47 60 L47 48 L53 48 L57 28" fill="none" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 36 L52 36" stroke="#e8c96d" stroke-width="1" opacity="0.5"/>
+    <path d="M40 60 L50 60" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <!-- Stella in diamante -->
+  <symbol id="icon-premium" viewBox="0 0 90 90">
+    <polygon points="45,5 85,45 45,85 5,45" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+    <path d="M45 25 L49 37 L62 37 L52 45 L55 57 L45 49 L35 57 L38 45 L28 37 L41 37Z" fill="none" stroke="#e8c96d" stroke-width="1.5" stroke-linejoin="round"/>
+  </symbol>
+  <!-- Pacchetto regalo in ottagono -->
+  <symbol id="icon-shipping" viewBox="0 0 90 90">
+    <polygon points="30,8 60,8 82,30 82,60 60,82 30,82 8,60 8,30" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+    <rect x="28" y="34" width="34" height="28" rx="2" fill="none" stroke="#e8c96d" stroke-width="1.8"/>
+    <rect x="28" y="28" width="34" height="10" rx="2" fill="none" stroke="#e8c96d" stroke-width="1.8"/>
+    <line x1="45" y1="28" x2="45" y2="62" stroke="#e8c96d" stroke-width="1.2"/>
+    <path d="M39 28 C39 24 42 22 45 22 C48 22 51 24 51 28" fill="none" stroke="#e8c96d" stroke-width="1.5"/>
+  </symbol>
+  <!-- Corona in doppio cerchio -->
+  <symbol id="icon-grand" viewBox="0 0 90 90">
+    <circle cx="45" cy="45" r="38" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="45" cy="45" r="32" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
+    <path d="M28 52 L28 38 L36 46 L45 32 L54 46 L62 38 L62 52Z" fill="none" stroke="#e8c96d" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="28" y1="55" x2="62" y2="55" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="28" cy="38" r="2" fill="#e8c96d"/>
+    <circle cx="45" cy="32" r="2" fill="#e8c96d"/>
+    <circle cx="62" cy="38" r="2" fill="#e8c96d"/>
+  </symbol>
+  <!-- Cuore cocktail in esagono -->
+  <symbol id="icon-drink" viewBox="0 0 90 90">
+    <polygon points="45,5 82,25 82,65 45,85 8,65 8,25" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.6"/>
+    <path d="M32 30 L43 48 L43 58 L47 58 L47 48 L58 30" fill="none" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32" y1="30" x2="58" y2="30" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="38" y1="58" x2="52" y2="58" stroke="#e8c96d" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="52" cy="36" r="3" fill="none" stroke="#e8c96d" stroke-width="1"/>
+  </symbol>
+</svg>
 
 <!-- FASE 1: INTRO -->
 <div class="phase active intro" id="phaseIntro">
@@ -624,7 +740,7 @@
   <h1 class="intro-title">Stasera<br><em>vinci qualcosa.</em></h1>
   <p class="intro-sub">Gratta e scopri il tuo premio esclusivo.<br>Premi offerti da Loft73 e Villa Renoir.</p>
   <button class="intro-btn" onclick="startGame()">Gioca ora →</button>
-  <p class="intro-note">Un solo tentativo per dispositivo</p>
+  <p class="intro-note">Un solo tentativo a persona</p>
 </div>
 
 <!-- FASE 2: GRATTA -->
@@ -632,47 +748,49 @@
   <p class="scratch-label">Il tuo premio è qui sotto</p>
   <h2 class="scratch-instruction">Gratta con il dito<br><em>e scopri cosa hai vinto</em></h2>
   <p class="scratch-hint">Passa il dito sulla carta dorata</p>
+  <div class="scratch-arrow">↓</div>
   <div class="scratch-container" id="scratchContainer">
     <div class="prize-under" id="prizeUnder">
-      <div class="prize-emoji" id="prizeEmoji">🎉</div>
+      <div id="prizeIconSmall"></div>
       <div class="prize-text" id="prizeText">10% di sconto</div>
       <div class="prize-desc" id="prizeDesc">Su tutto il sito Loft73</div>
     </div>
     <canvas id="scratchCanvas"></canvas>
   </div>
-  <p class="scratch-progress" id="scratchProgress">Gratta almeno il 50% per rivelare il premio</p>
+  <p class="scratch-progress" id="scratchProgress">Gratta almeno metà per scoprire il premio</p>
 </div>
 
 <!-- FASE 3: PREMIO -->
 <div class="phase prize-phase" id="phasePrize">
   <p class="prize-congrats">Complimenti!</p>
-  <div class="prize-main-emoji" id="prizeMainEmoji">🎉</div>
+  <div class="prize-main-icon" id="prizeMainIcon"></div>
   <h2 class="prize-main-title" id="prizeMainTitle">Hai vinto<br><em>10% di sconto</em></h2>
   <p class="prize-main-sub" id="prizeMainSub">Su tutto il sito Loft73</p>
 
   <div class="coupon-card" id="couponCard">
     <p class="coupon-type" id="couponType">Premio Loft73</p>
     <p class="coupon-prize-name" id="couponPrizeName">10% di sconto</p>
-    <p class="coupon-prize-detail" id="couponPrizeDetail">Valido su loft73.com e nei negozi di Legnano e Varese</p>
+    <p class="coupon-prize-detail" id="couponPrizeDetail">Valido su loft73.com e nei negozi</p>
     <div class="coupon-divider"></div>
     <p class="coupon-code-label">Il tuo codice sconto online</p>
     <div class="coupon-code" id="couponCode">RENOIR10</div>
-    <div class="coupon-divider" style="margin-top:20px"></div>
+    <div class="coupon-divider" style="margin-top:22px"></div>
     <div class="barcode-section">
-      <p class="barcode-label">Mostra in negozio per la verifica</p>
-      <canvas id="barcodeCanvas" width="280" height="70"></canvas>
+      <p class="barcode-label">Codice per verifica in negozio</p>
+      <canvas id="barcodeCanvas" width="290" height="75"></canvas>
     </div>
-    <p class="coupon-id" id="couponId">VR4829</p>
+    <p class="coupon-id" id="couponId">ABC123</p>
     <p class="coupon-validity" id="couponValidity">Valido fino al: --</p>
   </div>
 
   <div class="prize-instructions">
-    <p class="instruction-title">Come usare il premio</p>
+    <p class="instruction-title">Cosa devi fare</p>
     <div id="instructionsList"></div>
   </div>
 
   <div class="action-buttons">
-    <button class="save-btn" onclick="saveImage()">📸 &nbsp; Salva immagine</button>
+    <button class="save-btn" onclick="saveImage()">📸 &nbsp; Salva il premio nelle foto</button>
+    <p class="save-help">Tieni premuto sull'immagine per salvarla</p>
   </div>
 
   <div class="email-section">
@@ -682,31 +800,44 @@
       <input type="email" class="email-input" id="emailInput" placeholder="La tua email">
       <div class="privacy-check">
         <input type="checkbox" id="privacyCheck">
-        <label for="privacyCheck">Acconsento al trattamento dei dati da parte di Loft73 per ricevere comunicazioni commerciali. <a href="https://www.loft73.com/policies/privacy-policy" target="_blank">Informativa privacy</a></label>
+        <label for="privacyCheck">Acconsento al trattamento dei dati da parte di Loft73 per comunicazioni commerciali. <a href="https://www.loft73.com/policies/privacy-policy" target="_blank">Informativa privacy</a></label>
       </div>
       <button class="email-submit" id="emailSubmit" onclick="submitEmail()" disabled>Sì, avvisami</button>
     </div>
-    <p class="email-success" id="emailSuccess">✓ Iscritto! Ti avviseremo per le prossime serate.</p>
+    <p class="email-success" id="emailSuccess">✓ Fatto! Ti avviseremo per le prossime serate.</p>
   </div>
 
   <div class="prize-footer">
     <div class="prize-footer-logos">Loft73 × Villa Renoir</div>
-    <p class="prize-footer-note">Mostra questa schermata o l'immagine salvata in negozio</p>
+    <p class="prize-footer-note">Mostra questa schermata o l'immagine salvata</p>
   </div>
 </div>
 
 <script>
+  const ICONS = {
+    fashion: 'icon-fashion',
+    dining: 'icon-dining',
+    premium: 'icon-premium',
+    shipping: 'icon-shipping',
+    grand: 'icon-grand',
+    drink: 'icon-drink'
+  };
+
   const PRIZES = [
-    { weight: 30, emoji: '👗', name: '10% di sconto', desc: 'Su tutto il sito Loft73', detail: 'Valido su loft73.com e nei negozi di Legnano e Varese', code: 'RENOIR10', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Vai su <strong>loft73.com</strong> o vieni in negozio a Legnano o Varese' }, { text: 'Online: inserisci il codice al checkout. In negozio: <strong>mostra il codice a barre</strong>' }] },
-    { weight: 20, emoji: '🥂', name: 'Dessert offerto', desc: 'Alla prossima cena da Villa Renoir', detail: 'Un dessert a scelta offerto da Villa Renoir alla prossima visita', code: null, type: 'Premio Villa Renoir', category: 'villarenoir', hours: 720, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Alla prossima cena da <strong>Villa Renoir</strong>, mostra il codice a barre al cameriere' }, { text: 'Riceverai un <strong>dessert a scelta</strong> offerto dalla casa' }] },
-    { weight: 20, emoji: '✨', name: '15% di sconto', desc: 'Su tutto il sito Loft73', detail: 'Valido su loft73.com e nei negozi di Legnano e Varese', code: 'RENOIR15', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Vai su <strong>loft73.com</strong> o vieni in negozio a Legnano o Varese' }, { text: 'Online: inserisci il codice al checkout. In negozio: <strong>mostra il codice a barre</strong>' }] },
-    { weight: 15, emoji: '🍸', name: '€10 sulla cena', desc: 'Alla prossima cena da Villa Renoir', detail: '€10 di sconto sul conto alla prossima cena da Villa Renoir', code: null, type: 'Premio Villa Renoir', category: 'villarenoir', hours: 720, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Alla prossima visita da <strong>Villa Renoir</strong>, mostra il codice a barre al cameriere' }, { text: 'Riceverai <strong>€10 di sconto</strong> sul conto' }] },
-    { weight: 10, emoji: '🚚', name: 'Spedizione gratuita', desc: 'Sul prossimo ordine Loft73', detail: 'Spedizione gratuita senza minimo su loft73.com', code: 'RENOIRSHIP', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Vai su <strong>loft73.com</strong> e scegli i tuoi capi' }, { text: 'Inserisci il codice al checkout: <strong>spedizione gratuita</strong> senza minimo' }] },
-    { weight: 5, emoji: '🏆', name: 'Cena + Outfit', desc: 'Cena da Villa Renoir + €50 da Loft73', detail: 'Cena per due da Villa Renoir + buono €50 da Loft73', code: null, type: 'Gran Premio', category: 'both', hours: 720, instructions: [{ text: '<strong>Salva l\'immagine</strong> o fai uno screenshot' }, { text: 'Mostra il codice a barre al <strong>responsabile di sala</strong> di Villa Renoir' }, { text: 'Ti verrà confermata la <strong>cena per due</strong> e il <strong>buono Loft73 da €50</strong>' }] }
+    { weight: 30, icon: 'fashion', name: '10% di sconto', desc: 'Su tutto il sito Loft73', detail: 'Valido su loft73.com e nei negozi di Legnano e Varese', code: 'RENOIR10', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Vai su <strong>loft73.com</strong> oppure vieni in negozio a Legnano o Varese' }, { text: 'Online: inserisci il codice al checkout<br>In negozio: <strong>mostra il codice a barre</strong> alla cassa' }] },
+    { weight: 20, icon: 'dining', name: 'Dessert offerto', desc: 'Alla prossima cena da Villa Renoir', detail: 'Un dessert a scelta offerto da Villa Renoir alla prossima visita', code: null, type: 'Premio Villa Renoir', category: 'villarenoir', hours: 720, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Alla prossima cena da <strong>Villa Renoir</strong> mostra il codice a barre al cameriere' }, { text: 'Riceverai un <strong>dessert a scelta</strong> offerto dalla casa' }] },
+    { weight: 20, icon: 'premium', name: '15% di sconto', desc: 'Su tutto il sito Loft73', detail: 'Valido su loft73.com e nei negozi di Legnano e Varese', code: 'RENOIR15', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Vai su <strong>loft73.com</strong> oppure vieni in negozio a Legnano o Varese' }, { text: 'Online: inserisci il codice al checkout<br>In negozio: <strong>mostra il codice a barre</strong> alla cassa' }] },
+    { weight: 15, icon: 'drink', name: '€10 sulla cena', desc: 'Alla prossima cena da Villa Renoir', detail: '€10 di sconto sul conto alla prossima cena da Villa Renoir', code: null, type: 'Premio Villa Renoir', category: 'villarenoir', hours: 720, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Alla prossima visita da <strong>Villa Renoir</strong> mostra il codice a barre al cameriere' }, { text: 'Riceverai <strong>€10 di sconto</strong> sul conto' }] },
+    { weight: 10, icon: 'shipping', name: 'Spedizione gratuita', desc: 'Sul prossimo ordine Loft73', detail: 'Spedizione gratuita senza minimo su loft73.com', code: 'RENOIRSHIP', type: 'Premio Loft73', category: 'loft73', hours: 48, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Vai su <strong>loft73.com</strong> e scegli i tuoi capi' }, { text: 'Inserisci il codice al checkout: <strong>spedizione gratuita</strong> senza minimo' }] },
+    { weight: 5, icon: 'grand', name: 'Cena + Outfit', desc: 'Cena da Villa Renoir + €50 da Loft73', detail: 'Cena per due da Villa Renoir + buono €50 da Loft73', code: null, type: 'Gran Premio', category: 'both', hours: 720, instructions: [{ text: '<strong>Salva il premio nelle foto</strong> con il bottone qui sotto' }, { text: 'Mostra il codice a barre al <strong>responsabile di sala</strong> di Villa Renoir' }, { text: 'Ti verrà confermata la <strong>cena per due</strong> e il <strong>buono Loft73 da €50</strong>' }] }
   ];
 
   let selectedPrize = null;
   let uniqueCode = '';
+
+  function makeIcon(iconId, size) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 90 90"><use href="#${iconId}" xlink:href="#${iconId}"/></svg>`;
+  }
 
   function generateCode() {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -732,93 +863,110 @@
     try { const s = localStorage.getItem('loft73_vr_prize'); return s ? JSON.parse(s) : null; } catch(e) { return null; }
   }
 
-  function savePrize(prize, code, expiry) {
+  function savePrizeData(prize, code, expiry) {
     try { localStorage.setItem('loft73_vr_prize', JSON.stringify({ prize, code, expiry, timestamp: Date.now() })); } catch(e) {}
   }
 
   function saveImage() {
     const c = document.createElement('canvas');
-    c.width = 800; c.height = 1000;
+    c.width = 800; c.height = 1100;
     const ctx = c.getContext('2d');
 
-    ctx.fillStyle = '#0a0a0a'; ctx.fillRect(0, 0, 800, 1000);
-    ctx.strokeStyle = '#c9a84c'; ctx.lineWidth = 2; ctx.strokeRect(40, 40, 720, 920);
+    ctx.fillStyle = '#0a0a0a'; ctx.fillRect(0, 0, 800, 1100);
+    ctx.strokeStyle = '#c9a84c'; ctx.lineWidth = 2; ctx.strokeRect(30, 30, 740, 1040);
     ctx.strokeStyle = '#e8c96d'; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(40, 65); ctx.lineTo(40, 40); ctx.lineTo(65, 40); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(735, 960); ctx.lineTo(760, 960); ctx.lineTo(760, 935); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(30, 60); ctx.lineTo(30, 30); ctx.lineTo(60, 30); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(740, 1070); ctx.lineTo(770, 1070); ctx.lineTo(770, 1040); ctx.stroke();
 
     ctx.fillStyle = '#c9a84c'; ctx.font = '300 42px Cormorant Garamond, serif'; ctx.textAlign = 'center';
-    ctx.fillText('Loft73 × Villa Renoir', 400, 120);
+    ctx.fillText('Loft73 × Villa Renoir', 400, 110);
+    ctx.fillStyle = '#e8c96d'; ctx.font = '500 16px Montserrat, sans-serif';
+    ctx.fillText(selectedPrize.type.toUpperCase(), 400, 165);
 
-    ctx.fillStyle = '#c9a84c'; ctx.font = '500 16px Montserrat, sans-serif';
-    ctx.fillText(selectedPrize.type.toUpperCase(), 400, 180);
+    // Forma geometrica semplice al posto dell'emoji
+    ctx.strokeStyle = '#c9a84c'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = (Math.PI / 3) * i - Math.PI / 2;
+      const x = 400 + 40 * Math.cos(a);
+      const y = 240 + 40 * Math.sin(a);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath(); ctx.stroke();
+    ctx.fillStyle = '#e8c96d'; ctx.font = '600 28px Montserrat, sans-serif';
+    ctx.fillText('★', 400, 250);
 
-    ctx.font = '80px serif'; ctx.fillText(selectedPrize.emoji, 400, 300);
+    ctx.fillStyle = '#e8c96d'; ctx.font = '600 50px Cormorant Garamond, serif';
+    ctx.fillText(selectedPrize.name, 400, 340);
 
-    ctx.fillStyle = '#e8c96d'; ctx.font = '600 48px Cormorant Garamond, serif';
-    ctx.fillText(selectedPrize.name, 400, 380);
+    ctx.fillStyle = '#ccc'; ctx.font = '400 18px Montserrat, sans-serif';
+    const words = selectedPrize.detail.split(' ');
+    let line = ''; let lines = []; const maxW = 640;
+    for (const w of words) {
+      const test = line + w + ' ';
+      if (ctx.measureText(test).width > maxW && line) { lines.push(line.trim()); line = w + ' '; }
+      else { line = test; }
+    }
+    lines.push(line.trim());
+    lines.forEach((l, i) => ctx.fillText(l, 400, 385 + i * 26));
 
-    ctx.fillStyle = '#999'; ctx.font = '300 18px Montserrat, sans-serif';
-    const detailLines = selectedPrize.detail.length > 45 ? [selectedPrize.detail.substring(0, 45), selectedPrize.detail.substring(45)] : [selectedPrize.detail];
-    detailLines.forEach((line, i) => ctx.fillText(line, 400, 420 + i * 24));
+    let yPos = 385 + lines.length * 26 + 40;
+    ctx.strokeStyle = 'rgba(201,168,76,0.35)'; ctx.lineWidth = 1; ctx.setLineDash([6, 6]);
+    ctx.beginPath(); ctx.moveTo(80, yPos); ctx.lineTo(720, yPos); ctx.stroke(); ctx.setLineDash([]);
+    yPos += 45;
 
-    ctx.strokeStyle = 'rgba(201,168,76,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(100, 480); ctx.lineTo(700, 480); ctx.stroke(); ctx.setLineDash([]);
-
-    let yPos = 540;
     if (selectedPrize.code) {
-      ctx.fillStyle = '#999'; ctx.font = '500 16px Montserrat, sans-serif';
+      ctx.fillStyle = '#ccc'; ctx.font = '500 16px Montserrat, sans-serif';
       ctx.fillText('CODICE SCONTO ONLINE', 400, yPos);
-      ctx.fillStyle = '#fff'; ctx.font = '600 40px Cormorant Garamond, serif';
+      ctx.fillStyle = '#fff'; ctx.font = '600 42px Cormorant Garamond, serif';
       ctx.fillText(selectedPrize.code, 400, yPos + 50);
-      yPos += 110;
+      yPos += 100;
     }
 
-    ctx.fillStyle = '#999'; ctx.font = '500 16px Montserrat, sans-serif';
+    ctx.fillStyle = '#ccc'; ctx.font = '500 16px Montserrat, sans-serif';
     ctx.fillText('MOSTRA IN NEGOZIO', 400, yPos);
 
     let binary = '';
     for (let i = 0; i < uniqueCode.length; i++) binary += uniqueCode.charCodeAt(i).toString(2).padStart(8, '0');
     binary = '1010' + binary + '1010';
-    const bw = Math.floor(500 / binary.length);
+    const bw = Math.floor(520 / binary.length);
     const sx = Math.floor((800 - bw * binary.length) / 2);
     for (let i = 0; i < binary.length; i++) {
-      if (binary[i] === '1') { ctx.fillStyle = '#c9a84c'; ctx.fillRect(sx + i * bw, yPos + 20, bw, 70); }
+      if (binary[i] === '1') { ctx.fillStyle = '#c9a84c'; ctx.fillRect(sx + i * bw, yPos + 20, bw, 75); }
     }
 
-    ctx.fillStyle = '#fff'; ctx.font = '600 32px Montserrat, sans-serif';
-    ctx.fillText(uniqueCode, 400, yPos + 125);
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 34px Montserrat, sans-serif';
+    ctx.fillText(uniqueCode, 400, yPos + 135);
 
     const validDate = new Date(Date.now() + selectedPrize.hours * 60 * 60 * 1000);
     const validStr = validDate.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
-    ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '300 16px Montserrat, sans-serif';
-    ctx.fillText('Valido fino al: ' + validStr, 400, yPos + 170);
+    ctx.fillStyle = '#e8c96d'; ctx.font = '500 17px Montserrat, sans-serif';
+    ctx.fillText('Valido fino al ' + validStr, 400, yPos + 185);
 
-    ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.font = '300 14px Montserrat, sans-serif';
-    ctx.fillText('loft73.com · Boutique di Legnano e Varese', 400, 930);
+    ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.font = '300 14px Montserrat, sans-serif';
+    ctx.fillText('loft73.com · Boutique di Legnano e Varese', 400, 1040);
 
-    // Apri l'immagine in una nuova pagina — il cliente tiene premuto e salva nelle foto
     const imgData = c.toDataURL('image/png');
-    const newPage = document.createElement('div');
-    newPage.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;';
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;';
     
-    const instruction = document.createElement('p');
-    instruction.style.cssText = 'color:#c9a84c;font-family:Montserrat,sans-serif;font-size:15px;text-align:center;margin-bottom:20px;letter-spacing:0.1em;';
-    instruction.textContent = 'Tieni premuto sull\'immagine → Salva nelle foto';
+    const tip = document.createElement('p');
+    tip.style.cssText = 'color:#e8c96d;font-family:Montserrat,sans-serif;font-size:17px;font-weight:600;text-align:center;margin-bottom:20px;line-height:1.6;';
+    tip.innerHTML = '👆 Tieni premuto sull\'immagine<br>e scegli <em>"Salva nelle foto"</em>';
     
     const img = document.createElement('img');
     img.src = imgData;
-    img.style.cssText = 'max-width:90%;max-height:70vh;border:1px solid #c9a84c;';
+    img.style.cssText = 'max-width:92%;max-height:65vh;border:2px solid #c9a84c;';
     
     const closeBtn = document.createElement('button');
-    closeBtn.textContent = '✕ Chiudi';
-    closeBtn.style.cssText = 'margin-top:24px;background:none;border:1px solid rgba(201,168,76,0.4);color:#c9a84c;font-family:Montserrat,sans-serif;font-size:14px;padding:14px 36px;cursor:pointer;letter-spacing:0.15em;';
-    closeBtn.onclick = () => newPage.remove();
+    closeBtn.textContent = '✕  Chiudi';
+    closeBtn.style.cssText = 'margin-top:24px;background:none;border:1px solid rgba(201,168,76,0.4);color:#e8c96d;font-family:Montserrat,sans-serif;font-size:15px;font-weight:500;padding:14px 36px;cursor:pointer;letter-spacing:0.1em;';
+    closeBtn.onclick = () => overlay.remove();
     
-    newPage.appendChild(instruction);
-    newPage.appendChild(img);
-    newPage.appendChild(closeBtn);
-    document.body.appendChild(newPage);
+    overlay.appendChild(tip);
+    overlay.appendChild(img);
+    overlay.appendChild(closeBtn);
+    document.body.appendChild(overlay);
   }
 
   document.getElementById('privacyCheck').addEventListener('change', function() {
@@ -848,7 +996,7 @@
     }
     selectedPrize = pickPrize();
     uniqueCode = generateCode();
-    document.getElementById('prizeEmoji').textContent = selectedPrize.emoji;
+    document.getElementById('prizeIconSmall').innerHTML = makeIcon(selectedPrize.icon, 55);
     document.getElementById('prizeText').textContent = selectedPrize.name;
     document.getElementById('prizeDesc').textContent = selectedPrize.desc;
     document.getElementById('phaseIntro').classList.remove('active');
@@ -857,6 +1005,7 @@
   }
 
   let isScratching = false;
+  let revealed = false;
 
   function initScratch() {
     const container = document.getElementById('scratchContainer');
@@ -868,13 +1017,13 @@
     g.addColorStop(0, '#c9a84c'); g.addColorStop(0.3, '#e2c06a'); g.addColorStop(0.5, '#c9a84c'); g.addColorStop(0.7, '#b8933e'); g.addColorStop(1, '#d4ad55');
     ctx.fillStyle = g; ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = 'rgba(10,10,10,0.5)'; ctx.font = '600 18px Montserrat'; ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(10,10,10,0.45)'; ctx.font = '700 18px Montserrat'; ctx.textAlign = 'center';
     ctx.fillText('GRATTA QUI', canvas.width / 2, canvas.height / 2 - 12);
-    ctx.font = '300 15px Montserrat';
-    ctx.fillText('Passa il dito per scoprire', canvas.width / 2, canvas.height / 2 + 18);
+    ctx.font = '400 14px Montserrat';
+    ctx.fillText('Passa il dito per scoprire', canvas.width / 2, canvas.height / 2 + 16);
 
-    ctx.strokeStyle = 'rgba(10,10,10,0.12)'; ctx.lineWidth = 0.5;
-    for (let i = 0; i < canvas.width + canvas.height; i += 12) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(0, i); ctx.stroke(); }
+    ctx.strokeStyle = 'rgba(10,10,10,0.1)'; ctx.lineWidth = 0.5;
+    for (let i = 0; i < canvas.width + canvas.height; i += 14) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(0, i); ctx.stroke(); }
 
     function getPos(e) { const r = canvas.getBoundingClientRect(); const t = e.touches ? e.touches[0] : e; return { x: t.clientX - r.left, y: t.clientY - r.top }; }
     function scratch(p) { ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(p.x, p.y, 28, 0, Math.PI * 2); ctx.fill(); checkPct(); }
@@ -888,52 +1037,80 @@
   }
 
   function checkPct() {
-    const canvas = document.getElementById('scratchCanvas');
-    const d = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
-    let t = 0; const total = d.length / 4;
-    for (let i = 3; i < d.length; i += 4) { if (d[i] === 0) t++; }
-    const pct = (t / total) * 100;
-    if (pct > 30) document.getElementById('scratchProgress').textContent = 'Continua a grattare...';
-    if (pct > 50) revealPrize();
+    if (revealed) return;
+    try {
+      const canvas = document.getElementById('scratchCanvas');
+      const ctx = canvas.getContext('2d');
+      const d = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+      let t = 0; const total = d.length / 4;
+      for (let i = 3; i < d.length; i += 4) { if (d[i] === 0) t++; }
+      const pct = (t / total) * 100;
+      if (pct > 30) document.getElementById('scratchProgress').textContent = 'Ancora un po\'...';
+      if (pct > 50) {
+        revealed = true;
+        revealPrize();
+      }
+    } catch(e) {
+      console.error('checkPct error:', e);
+    }
   }
 
   function revealPrize() {
-    const expiry = new Date(Date.now() + selectedPrize.hours * 60 * 60 * 1000);
-    savePrize(selectedPrize, uniqueCode, expiry.toISOString());
-    setTimeout(() => showPrizeScreen(expiry), 600);
+    try {
+      const expiry = new Date(Date.now() + selectedPrize.hours * 60 * 60 * 1000);
+      savePrizeData(selectedPrize, uniqueCode, expiry.toISOString());
+      showPrizeScreen(expiry);
+    } catch(e) {
+      console.error('revealPrize error:', e);
+      // Fallback: forza il passaggio alla schermata premio
+      document.getElementById('phaseScratch').classList.remove('active');
+      document.getElementById('phasePrize').classList.add('active');
+    }
   }
 
   function showPrizeScreen(expiry) {
-    const vs = expiry.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-    document.getElementById('prizeMainEmoji').textContent = selectedPrize.emoji;
-    document.getElementById('prizeMainTitle').innerHTML = `Hai vinto<br><em>${selectedPrize.name}</em>`;
-    document.getElementById('prizeMainSub').textContent = selectedPrize.desc;
-    document.getElementById('couponType').textContent = selectedPrize.type;
-    document.getElementById('couponPrizeName').textContent = selectedPrize.name;
-    document.getElementById('couponPrizeDetail').textContent = selectedPrize.detail;
-    document.getElementById('couponValidity').textContent = `Valido fino al: ${vs}`;
-    document.getElementById('couponId').textContent = uniqueCode;
+    try {
+      const vs = expiry.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      
+      const iconEl = document.getElementById('prizeMainIcon');
+      if (iconEl && selectedPrize.icon) {
+        iconEl.innerHTML = makeIcon(selectedPrize.icon, 90);
+      }
+      
+      document.getElementById('prizeMainTitle').innerHTML = `Hai vinto<br><em>${selectedPrize.name}</em>`;
+      document.getElementById('prizeMainSub').textContent = selectedPrize.desc;
+      document.getElementById('couponType').textContent = selectedPrize.type;
+      document.getElementById('couponPrizeName').textContent = selectedPrize.name;
+      document.getElementById('couponPrizeDetail').textContent = selectedPrize.detail;
+      document.getElementById('couponValidity').textContent = `⏰ Valido fino al ${vs}`;
+      document.getElementById('couponId').textContent = uniqueCode;
 
-    if (selectedPrize.code) {
-      document.getElementById('couponCode').textContent = selectedPrize.code;
-      document.getElementById('couponCode').style.display = 'inline-block';
-      document.querySelector('.coupon-code-label').style.display = 'block';
-    } else {
-      document.getElementById('couponCode').style.display = 'none';
-      document.querySelector('.coupon-code-label').style.display = 'none';
+      if (selectedPrize.code) {
+        document.getElementById('couponCode').textContent = selectedPrize.code;
+        document.getElementById('couponCode').style.display = 'inline-block';
+        document.querySelector('.coupon-code-label').style.display = 'block';
+      } else {
+        document.getElementById('couponCode').style.display = 'none';
+        document.querySelector('.coupon-code-label').style.display = 'none';
+      }
+
+      drawBarcode(document.getElementById('barcodeCanvas'), uniqueCode);
+
+      const list = document.getElementById('instructionsList');
+      list.innerHTML = '';
+      selectedPrize.instructions.forEach((inst, i) => {
+        list.innerHTML += `<div class="instruction-item"><span class="instruction-num">${i + 1}</span><span class="instruction-text">${inst.text}</span></div>`;
+      });
+
+      document.getElementById('phaseIntro').classList.remove('active');
+      document.getElementById('phaseScratch').classList.remove('active');
+      document.getElementById('phasePrize').classList.add('active');
+    } catch(e) {
+      console.error('showPrizeScreen error:', e);
+      // Fallback: mostra comunque la schermata premio
+      document.getElementById('phaseScratch').classList.remove('active');
+      document.getElementById('phasePrize').classList.add('active');
     }
-
-    drawBarcode(document.getElementById('barcodeCanvas'), uniqueCode);
-
-    const list = document.getElementById('instructionsList');
-    list.innerHTML = '';
-    selectedPrize.instructions.forEach((inst, i) => {
-      list.innerHTML += `<div class="instruction-item"><span class="instruction-num">${i + 1}</span><span class="instruction-text">${inst.text}</span></div>`;
-    });
-
-    document.getElementById('phaseIntro').classList.remove('active');
-    document.getElementById('phaseScratch').classList.remove('active');
-    document.getElementById('phasePrize').classList.add('active');
   }
 
   window.addEventListener('DOMContentLoaded', () => {
